@@ -1,20 +1,43 @@
-import { Poppins, Lora } from "next/font/google";
+"use client";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Reviews from "./components/Reviews";
+import Contact from "./components/Contact";
+import Services from "./components/Services";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-export default async function Home() {
+export default function Home() {
   return (
-    <div>
-      <div className={`${poppins.className} `}>This is Poppins</div>
-      <div className={`${lora.className} `}>This is Lora</div>
+    <div className="scroll-smooth">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section id="home">
+        <Hero />
+      </section>
+
+      {/* Services Section */}
+      <section id="services">
+        <Services />
+      </section>
+
+      {/* About Section */}
+      <section id="about">
+        <About />
+      </section>
+
+      {/* Reviews Section */}
+      <section id="reviews">
+        <Reviews />
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact">
+        <Contact />
+      </section>
+
+      <Footer />
     </div>
   );
 }
