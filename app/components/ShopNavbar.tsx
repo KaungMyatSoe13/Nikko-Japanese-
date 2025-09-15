@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCartIcon } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,18 +10,24 @@ export default function Navbar() {
 
   const Categories = [
     { name: "Home", id: "home" },
-    { name: "Services", id: "services" },
-    { name: "About", id: "about" },
-    { name: "Student Reviews", id: "reviews" },
-    { name: "Contact Us", id: "contact" },
-    { name: "Shop", id: "shop" },
+    { name: "Products", id: "products" },
+    { name: "Contact", id: "contact" },
+    { name: "Login", id: "auth/login" },
+    {
+      name: (
+        <>
+          <ShoppingCartIcon />
+        </>
+      ),
+      id: "cart",
+    },
   ];
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-xl z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between ">
         {/* Logo */}
-        <a href="shop" className="flex items-center gap-2">
+        <a href="/shop" className="flex items-center gap-2">
           <Image
             src="/assets/images/logoWhite.png"
             alt="Logo"
@@ -37,7 +43,7 @@ export default function Navbar() {
           {Categories.map((cat) => (
             <a
               key={cat.name}
-              href={cat.name === "Shop" ? "/shop" : `#${cat.id}`}
+              href={cat.name === "Home" ? "/shop" : `/${cat.id}`}
               className="text-gray-700 hover:text-blue-600 transition"
             >
               {cat.name}
