@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
         });
 
         if (res.data.properties?.email_otp) {
+          const otp = res.data.properties.email_otp;
+          console.log("Generated OTP:", otp);
           // Use HTML string instead of React component
           const htmlContent = `
             <!DOCTYPE html>
@@ -70,6 +72,7 @@ export async function POST(request: NextRequest) {
 
           console.log("Resend response:", data);
         } else {
+          console.error("Failed to generate OTP:", res.error);
           return NextResponse.json({ data: null, error: res.error });
         }
         break;
